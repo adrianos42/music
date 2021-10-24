@@ -1,4 +1,8 @@
 import 'package:desktop/desktop.dart';
+import 'songs/songs.dart';
+import 'playback/playback.dart';
+import 'playlist/playlist.dart';
+import 'now_playing/now_playing.dart';
 
 class MusicHome extends StatefulWidget {
   const MusicHome({Key? key}) : super(key: key);
@@ -8,60 +12,85 @@ class MusicHome extends StatefulWidget {
 }
 
 class _MusicHome extends State<MusicHome> {
+  int currentTrackIndex = 2;
+
   @override
   Widget build(BuildContext context) {
-    return Nav(
-      navAxis: Axis.horizontal,
-      trailingMenu: [
-        NavItem(
-          builder: (context) => Column(
-            children: [
-              Flexible(
-                flex: 2,
-                child: Container(
+    final color = Theme.of(context).colorScheme.background[4];
+
+    final playback = Playback(currentTrackIndex);
+
+    return Column(
+      children: [
+        Expanded(
+          child: Nav(
+            navAxis: Axis.horizontal,
+            trailingMenu: [
+              NavItem(
+                builder: (context, _) => Container(
+                  constraints:
+                      const BoxConstraints(maxHeight: 200.0, minHeight: 100.0),
                   color: const Color.fromARGB(0XFF, 0x0, 0x0, 0x0),
                   alignment: Alignment.center,
                   child: const Text('shittt'),
                 ),
+                title: 'search',
+                icon: Icons.settings,
+              )
+            ],
+            items: [
+              NavItem(
+                builder: (context, _) => Column(
+                  children: [
+                    Expanded(child: NowPlaying(currentTrackIndex)),
+                    playback,
+                  ],
+                ),
+                title: 'Now Playing',
+                icon: Icons.music_note,
               ),
-              const Spacer(flex: 8),
+              NavItem(
+                builder: (context, _) => Column(
+                  children: [
+                    Expanded(child: Playlist()),
+                    playback,
+                  ],
+                ),
+                title: 'Playlist',
+                icon: Icons.playlist_play,
+              ),
+              NavItem(
+                builder: (context, _) => Column(
+                  children: [
+                    Expanded(child: Text('')),
+                    playback,
+                  ],
+                ),
+                title: 'Composers',
+                icon: Icons.music_note,
+              ),
+              NavItem(
+                builder: (context, _) => Column(
+                  children: [
+                    Expanded(child: Text('')),
+                    playback,
+                  ],
+                ),
+                title: 'Albums',
+                icon: Icons.music_note,
+              ),
+              NavItem(
+                builder: (context, _) => Column(
+                  children: [
+                    Expanded(child: Songs()),
+                    playback,
+                  ],
+                ),
+                title: 'Songs',
+                icon: Icons.playlist_play,
+              ),
             ],
           ),
-          title: 'st',
-          route: 'pfp',
-          icon: Icons.search,
-        )
-      ],
-      items: [
-        NavItem(
-          builder: (context) => const Center(child: Text('st')),
-          title: 'Now Playing',
-          route: 'now_playing',
-          icon: Icons.music_note,
-        ),
-        NavItem(
-          builder: (context) => const Center(child: Text('st')),
-          title: 'Playlist',
-          route: 'playlist',
-          icon: Icons.playlist_play,
-        ),
-        NavItem(
-          builder: (context) => const Center(child: Text('st')),
-          title: 'Composers',
-          route: 'composers',
-          icon: Icons.music_note,
-        ),
-        NavItem(
-          builder: (context) => const Center(child: Text('st')),
-          title: 'Albums',
-          route: 'albums',
-          icon: Icons.music_note,
-        ),
-        NavItem(
-          builder: (context) => const Center(child: Text('st')),
-          title: 'Songs',
-          route: 'songs',
-          icon: Icons.playlist_play,
         ),
       ],
     );
