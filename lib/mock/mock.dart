@@ -39,7 +39,7 @@ const albums = [
     composer: 'Gioachino Rossini',
     conductor: 'Alceo Galliera',
     //cover: 'assets/Il_barbiere_di_Siviglia_sleeve.jpg',
-    cover: 'assets/folder.jpg',
+    cover: 'assets/cover.jpg',
     orchestra: 'Philharmonia Orchestra and Chorus',
     songs: [
       Song(

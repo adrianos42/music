@@ -16,9 +16,18 @@ class _PlaybackState extends State<Playback> {
     final album = albums[0];
     final song = album.songs[widget.currentTrackIndex];
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return ColoredBox(
-      color: Theme.of(context).colorScheme.background[4],
+    return Container(
+      decoration: BoxDecoration(
+        color: colorScheme.background[0],
+        border: Border(
+          top: BorderSide(
+            color: colorScheme.background[0],
+            width: 1.0,
+          ),
+        ),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

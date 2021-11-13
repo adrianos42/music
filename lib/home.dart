@@ -66,7 +66,7 @@ class _MusicHome extends State<MusicHome> {
                     playback,
                   ],
                 ),
-                title: 'Composers',
+                title: 'Albums',
                 icon: Icons.music_note,
               ),
               NavItem(
@@ -76,17 +76,17 @@ class _MusicHome extends State<MusicHome> {
                     playback,
                   ],
                 ),
-                title: 'Albums',
+                title: 'Composers',
                 icon: Icons.music_note,
               ),
               NavItem(
                 builder: (context, _) => Column(
                   children: [
-                    Expanded(child: Songs()),
+                    Expanded(child: Music()),
                     playback,
                   ],
                 ),
-                title: 'Songs',
+                title: 'Music',
                 icon: Icons.playlist_play,
               ),
             ],

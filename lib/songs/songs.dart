@@ -1,15 +1,15 @@
 import 'package:desktop/desktop.dart';
 import '../mock/mock.dart';
 
-class Songs extends StatefulWidget {
+class Music extends StatefulWidget {
   @override
-  _SongsState createState() => _SongsState();
+  _MusicState createState() => _MusicState();
 }
 
-class _SongsState extends State<Songs> {
+class _MusicState extends State<Music> {
   @override
   Widget build(BuildContext context) {
-    final newSongs = [
+    final newMusics = [
       ...albums[0].songs,
       ...albums[0].songs,
       ...albums[0].songs,
@@ -21,13 +21,13 @@ class _SongsState extends State<Songs> {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            'Songs',
+            'Music',
             style: Theme.of(context).textTheme.header,
           ),
         ),
         Expanded(
           child: ListTable(
-            itemCount: newSongs.length,
+            itemCount: newMusics.length,
             colCount: 4,
             tableBorder: TableBorder(
               horizontalInside: BorderSide(
@@ -92,14 +92,14 @@ class _SongsState extends State<Songs> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(left: 16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: Text(
-                                newSongs[index].title,
+                                newMusics[index].title,
                                 overflow: TextOverflow.ellipsis,
                                 style: textTheme.title,
                               ),
@@ -154,6 +154,22 @@ class _SongsState extends State<Songs> {
                                 ),
                               ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0.0),
+                              child: Row(
+                                children: [
+                                  Button.icon(
+                                    Icons.play_arrow,
+                                    padding: EdgeInsets.zero,
+                                    onPressed: () {},
+                                  ),
+                                  Button.icon(
+                                    Icons.playlist_add,
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -168,7 +184,7 @@ class _SongsState extends State<Songs> {
               switch (col) {
                 case 0:
                   result = Text(
-                    newSongs[row].title,
+                    newMusics[row].title,
                     overflow: TextOverflow.ellipsis,
                   );
                   break;
